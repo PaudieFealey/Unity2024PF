@@ -20,6 +20,10 @@ public class PhysicsScript : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Space))
             return;
-        rb.AddForce(transform.up);
+        rb.AddExplosionForce(2500,
+            transform.position + new Vector3(0, -1, -1), -2);
+
+    
+           
     }
 }

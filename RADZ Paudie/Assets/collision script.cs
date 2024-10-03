@@ -4,16 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class movehero : MonoBehaviour
-{ Animator goblinmove;
+public class collision : MonoBehaviour
+{
+    Animator goblinmove;
     // Start is called before the first frame update
     void Start()
     {
-        goblinmove = GetComponent<Animator>();
-        if (goblinmove != null)
-            print("Could not find Animator Component");
-        else
-            print("Animator Component found");
+
     }
 
     // Update is called once per frame
@@ -21,12 +18,7 @@ public class movehero : MonoBehaviour
     {
 
         if (Input.GetKey(KeyCode.W))
-        {
             transform.position += transform.forward * Time.deltaTime;
-
-            goblinmove.SetBool("isRunning", true);
-        }
-
 
         if (Input.GetKey(KeyCode.D))
             transform.Rotate(Vector3.up, 60 * Time.deltaTime);
@@ -51,5 +43,10 @@ public class movehero : MonoBehaviour
         print(collision.gameObject.name);
 
         collision.gameObject.transform.position += Vector3.forward;
+        football myFootball = collision.gameObject.GetComponent<football>();
+        if (myFootball != null)
+        {
+            myFootball.Kick();
+        }
     }
 }

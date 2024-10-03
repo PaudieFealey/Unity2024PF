@@ -4,12 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class movehero : MonoBehaviour
-{ Animator goblinmove;
+public class collisionscript : MonoBehaviour
+{
+    Animator goblinmove;
     // Start is called before the first frame update
     void Start()
     {
-        goblinmove = GetComponent<Animator>();
+        Animator goblinmove = GetComponent<Animator>();
         if (goblinmove != null)
             print("Could not find Animator Component");
         else

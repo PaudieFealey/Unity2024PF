@@ -4,12 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class movehero : MonoBehaviour
-{ Animator goblinmove;
+public class gobmove : MonoBehaviour
+{
+    Animator goblinmove;
     // Start is called before the first frame update
     void Start()
     {
-        goblinmove = GetComponent<Animator>();
+        Animator goblinmove = GetComponent<Animator>();
         if (goblinmove != null)
             print("Could not find Animator Component");
         else
@@ -21,11 +22,10 @@ public class movehero : MonoBehaviour
     {
 
         if (Input.GetKey(KeyCode.W))
-        {
             transform.position += transform.forward * Time.deltaTime;
-
             goblinmove.SetBool("isRunning", true);
-        }
+
+
 
 
         if (Input.GetKey(KeyCode.D))
@@ -45,11 +45,5 @@ public class movehero : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
             transform.position += Vector3.up * Time.deltaTime;
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        print(collision.gameObject.name);
-
-        collision.gameObject.transform.position += Vector3.forward;
     }
 }
